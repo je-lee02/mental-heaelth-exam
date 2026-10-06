@@ -130,7 +130,7 @@ h1{
   max-width:500px;
 }
 
-.name-input{
+.info-input{
   width:100%;
   padding:16px 18px;
   border:3px solid var(--ink);
@@ -140,9 +140,10 @@ h1{
   font-size:18px;
   font-weight:700;
   text-align:center;
+  margin-bottom:10px;
 }
 
-.name-input:focus{
+.info-input:focus{
   box-shadow:5px 5px 0 var(--lime);
 }
 
@@ -168,6 +169,43 @@ h1{
 .btn:active{
   transform:translate(5px,5px);
   box-shadow:0 0 0 var(--ink);
+}
+
+.privacy-box{
+  margin-top:14px;
+  padding:15px;
+  border:3px solid var(--ink);
+  border-radius:14px;
+  background:#fff;
+  text-align:left;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.privacy-title{
+  font-weight:900;
+  font-size:15px;
+  margin-bottom:8px;
+}
+
+.privacy-content{
+  color:#444;
+  margin-bottom:10px;
+}
+
+.privacy-check{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.privacy-check input{
+  width:18px;
+  height:18px;
+  margin-top:3px;
+  flex:none;
 }
 
 .notice{
@@ -441,6 +479,11 @@ h1{
     padding:10px;
   }
 
+  .privacy-box{
+    font-size:12px;
+    padding:13px;
+  }
+
   .question-card{
     padding:22px 16px;
   }
@@ -496,14 +539,24 @@ h1{
 <div class="doodle d3">💭</div>
 <div class="doodle d4">🦛</div>
 
-<!-- 시작 화면 -->
+
+<!-- =========================
+     시작 화면
+     ========================= -->
+
 <section id="startScreen" class="screen active">
+
   <div class="wrap">
+
     <div class="card cover">
 
-      <div class="stamp">2026 광명 청년 정신건강 캠페인</div>
+      <div class="stamp">
+        2026 광명 청년 정신건강 캠페인
+      </div>
 
-      <h1>정신건강<br>고사</h1>
+      <h1>
+        정신건강<br>고사
+      </h1>
 
       <div class="subtitle">
         당신의 정신건강 상식,<br>
@@ -511,6 +564,7 @@ h1{
       </div>
 
       <div class="exam-info">
+
         <div class="info-box">
           <small>문항</small>
           10문항
@@ -525,61 +579,172 @@ h1{
           <small>난이도</small>
           ★★★☆☆
         </div>
+
       </div>
+
 
       <div class="start-box">
 
+        <!-- 이름 -->
         <input
           id="nameInput"
-          class="name-input"
+          class="info-input"
           type="text"
           maxlength="20"
           placeholder="이름을 입력해주세요"
           autocomplete="off"
         >
 
-        <button class="btn" onclick="startExam()">
+        <!-- 출생연도 -->
+        <input
+          id="birthYearInput"
+          class="info-input"
+          type="number"
+          min="1900"
+          max="2026"
+          placeholder="출생연도 4자리"
+          inputmode="numeric"
+        >
+
+        <!-- 전화번호 -->
+        <input
+          id="phoneInput"
+          class="info-input"
+          type="tel"
+          maxlength="13"
+          placeholder="전화번호 (010-0000-0000)"
+          autocomplete="tel"
+          inputmode="numeric"
+        >
+
+
+        <!-- 개인정보 수집·이용 안내 -->
+        <div class="privacy-box">
+
+          <div class="privacy-title">
+            개인정보 수집·이용 안내
+          </div>
+
+          <div class="privacy-content">
+
+            <strong>수집항목</strong> :
+            이름, 출생연도, 전화번호<br>
+
+            <strong>수집·이용 목적</strong> :
+            정신건강 고사 캠페인 참여 확인,
+            참여 결과 관리 및 이벤트 당첨자 안내<br>
+
+            <strong>보유·이용 기간</strong> :
+            캠페인 운영 종료 후 3개월<br>
+
+            <strong>동의 거부 권리</strong> :
+            개인정보 수집·이용에 대한 동의를
+            거부할 수 있습니다. 다만, 동의하지 않을 경우
+            캠페인 참여가 제한될 수 있습니다.
+
+          </div>
+
+
+          <label class="privacy-check">
+
+            <input
+              id="privacyAgree"
+              type="checkbox"
+            >
+
+            <span>
+              개인정보 수집·이용에 동의합니다. (필수)
+            </span>
+
+          </label>
+
+        </div>
+
+
+        <button
+          class="btn"
+          onclick="startExam()"
+        >
           시험 시작하기 →
         </button>
 
+
         <div class="notice">
-          ※ 이름과 시험 결과(점수, 등급, 소요시간)가 이벤트 운영을 위해 저장됩니다.
+          ※ 입력한 정보는 캠페인 운영 및 이벤트 참여 확인을 위해 사용됩니다.
         </div>
 
       </div>
+
     </div>
+
   </div>
+
 </section>
 
 
-<!-- 시험 화면 -->
+
+<!-- =========================
+     시험 화면
+     ========================= -->
+
 <section id="examScreen" class="screen">
 
   <div class="exam-wrap">
 
     <div class="exam-header">
-      <div class="exam-title">정신건강 고사</div>
-      <div id="timer" class="timer">05:00</div>
+
+      <div class="exam-title">
+        정신건강 고사
+      </div>
+
+      <div id="timer" class="timer">
+        05:00
+      </div>
+
     </div>
 
+
     <div class="progress">
-      <div id="bar" class="progress-bar"></div>
+
+      <div
+        id="bar"
+        class="progress-bar"
+      ></div>
+
     </div>
+
 
     <div class="card question-card">
 
-      <div id="qnum" class="q-number">
+      <div
+        id="qnum"
+        class="q-number"
+      >
         QUESTION 01 / 10
       </div>
 
-      <div id="question" class="question"></div>
 
-      <div id="options" class="options"></div>
+      <div
+        id="question"
+        class="question"
+      ></div>
+
+
+      <div
+        id="options"
+        class="options"
+      ></div>
+
 
       <div class="exam-footer">
-        <div id="progressText" class="progress-text">
+
+        <div
+          id="progressText"
+          class="progress-text"
+        >
           1 / 10
         </div>
+
 
         <button
           id="nextBtn"
@@ -588,70 +753,123 @@ h1{
         >
           다음 →
         </button>
+
       </div>
 
     </div>
+
   </div>
 
 </section>
 
 
-<!-- 결과 화면 -->
+
+<!-- =========================
+     결과 화면
+     ========================= -->
+
 <section id="resultScreen" class="screen">
 
   <div class="wrap">
 
     <div class="card result-card">
 
-      <div class="stamp">시험 종료!</div>
+      <div class="stamp">
+        시험 종료!
+      </div>
+
 
       <h2 style="font-family:'Jua',sans-serif;font-size:40px;margin:10px 0;">
         정신건강 고사 결과
       </h2>
 
-      <div id="resultBadge" class="result-badge">
+
+      <div
+        id="resultBadge"
+        class="result-badge"
+      >
         A+
       </div>
 
-      <div id="resultScore" class="result-score">
+
+      <div
+        id="resultScore"
+        class="result-score"
+      >
         100점
       </div>
 
-      <div id="resultMessage" class="result-message">
+
+      <div
+        id="resultMessage"
+        class="result-message"
+      >
         정신건강 상식이 아주 탄탄하네요!
       </div>
+
 
       <div class="result-info">
 
         <div class="result-row">
-          <span>응시자</span>
+
+          <span>
+            응시자
+          </span>
+
           <span id="resultName"></span>
+
         </div>
 
+
         <div class="result-row">
-          <span>점수</span>
+
+          <span>
+            점수
+          </span>
+
           <span id="resultScoreSmall"></span>
+
         </div>
 
+
         <div class="result-row">
-          <span>등급</span>
+
+          <span>
+            등급
+          </span>
+
           <span id="resultGrade"></span>
+
         </div>
 
+
         <div class="result-row">
-          <span>소요시간</span>
+
+          <span>
+            소요시간
+          </span>
+
           <span id="resultTime"></span>
+
         </div>
 
       </div>
 
+
       <div class="result-buttons">
 
-        <button class="btn" onclick="restartExam()">
+        <button
+          class="btn"
+          onclick="restartExam()"
+        >
           다시 풀기
         </button>
 
-        <button class="btn secondary" onclick="location.reload()">
+
+        <button
+          class="btn secondary"
+          onclick="location.reload()"
+        >
           처음으로
         </button>
 
@@ -664,10 +882,12 @@ h1{
 </section>
 
 
+
 <script>
 
+
 /* =====================================================
-   Google Apps Script 연결 주소
+   Google Apps Script 연결
    ===================================================== */
 
 const GOOGLE_SHEET_WEB_APP_URL =
@@ -680,39 +900,80 @@ const GOOGLE_SHEET_WEB_APP_URL =
 
 let submitted = false;
 
-async function saveResult(score, grade, elapsedSeconds){
 
-  if(!GOOGLE_SHEET_WEB_APP_URL || submitted){
+async function saveResult(
+  score,
+  grade,
+  elapsedSeconds
+){
+
+  if(
+    !GOOGLE_SHEET_WEB_APP_URL ||
+    submitted
+  ){
     return;
   }
 
+
   submitted = true;
 
+
   const data = {
-    submittedAt: new Date().toISOString(),
-    name: userName,
-    score: score,
-    grade: grade,
-    elapsedSeconds: elapsedSeconds
+
+    submittedAt:
+      new Date().toISOString(),
+
+    name:
+      userName,
+
+    birthYear:
+      userBirthYear,
+
+    phone:
+      userPhone,
+
+    score:
+      score,
+
+    grade:
+      grade,
+
+    elapsedSeconds:
+      elapsedSeconds
+
   };
+
 
   try{
 
-    await fetch(GOOGLE_SHEET_WEB_APP_URL,{
-      method:"POST",
-      mode:"no-cors",
-      headers:{
-        "Content-Type":"text/plain;charset=utf-8"
-      },
-      body:JSON.stringify(data)
-    });
+    await fetch(
+      GOOGLE_SHEET_WEB_APP_URL,
+      {
+        method:"POST",
+
+        mode:"no-cors",
+
+        headers:{
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:
+          JSON.stringify(data)
+      }
+    );
 
   }catch(error){
 
-    console.error("결과 저장 오류:",error);
+    console.error(
+      "결과 저장 오류:",
+      error
+    );
 
   }
+
 }
+
 
 
 /* =====================================================
@@ -834,13 +1095,15 @@ const questions = [
 ];
 
 
+
 /* =====================================================
    시험 상태
    ===================================================== */
 
 let idx = 0;
 
-let answers = Array(questions.length).fill(null);
+let answers =
+  Array(questions.length).fill(null);
 
 let seconds = 300;
 
@@ -850,6 +1113,11 @@ let startTime = null;
 
 let userName = "";
 
+let userBirthYear = "";
+
+let userPhone = "";
+
+
 
 /* =====================================================
    화면 전환
@@ -857,11 +1125,17 @@ let userName = "";
 
 function showScreen(id){
 
-  document.querySelectorAll(".screen").forEach(screen=>{
-    screen.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen=>{
+      screen.classList.remove("active");
+    });
 
-  document.getElementById(id).classList.add("active");
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
 
   window.scrollTo({
     top:0,
@@ -871,45 +1145,250 @@ function showScreen(id){
 }
 
 
+
+/* =====================================================
+   전화번호 형식
+   ===================================================== */
+
+function formatPhone(value){
+
+  const numbers =
+    value.replace(/[^0-9]/g,"");
+
+
+  if(numbers.length <= 3){
+
+    return numbers;
+
+  }
+
+
+  if(numbers.length <= 7){
+
+    return (
+      numbers.slice(0,3) +
+      "-" +
+      numbers.slice(3)
+    );
+
+  }
+
+
+  return (
+    numbers.slice(0,3) +
+    "-" +
+    numbers.slice(3,7) +
+    "-" +
+    numbers.slice(7,11)
+  );
+
+}
+
+
+
 /* =====================================================
    시험 시작
    ===================================================== */
 
 function startExam(){
 
-  const input =
-    document.getElementById("nameInput").value.trim();
+  const name =
+    document
+      .getElementById("nameInput")
+      .value
+      .trim();
 
-  if(!input){
 
-    alert("이름을 입력해주세요!");
+  const birthYear =
+    document
+      .getElementById("birthYearInput")
+      .value
+      .trim();
 
-    document.getElementById("nameInput").focus();
+
+  const phone =
+    document
+      .getElementById("phoneInput")
+      .value
+      .trim();
+
+
+  const privacyAgree =
+    document
+      .getElementById("privacyAgree")
+      .checked;
+
+
+
+  /* 이름 확인 */
+
+  if(!name){
+
+    alert(
+      "이름을 입력해주세요!"
+    );
+
+    document
+      .getElementById("nameInput")
+      .focus();
 
     return;
+
   }
 
-  userName = input;
+
+
+  /* 출생연도 확인 */
+
+  if(!birthYear){
+
+    alert(
+      "출생연도를 입력해주세요!"
+    );
+
+    document
+      .getElementById("birthYearInput")
+      .focus();
+
+    return;
+
+  }
+
+
+  const year =
+    Number(birthYear);
+
+
+  if(
+    !/^\d{4}$/.test(birthYear) ||
+    year < 1900 ||
+    year > 2026
+  ){
+
+    alert(
+      "출생연도를 4자리 숫자로 정확하게 입력해주세요."
+    );
+
+    document
+      .getElementById("birthYearInput")
+      .focus();
+
+    return;
+
+  }
+
+
+
+  /* 전화번호 확인 */
+
+  if(!phone){
+
+    alert(
+      "전화번호를 입력해주세요!"
+    );
+
+    document
+      .getElementById("phoneInput")
+      .focus();
+
+    return;
+
+  }
+
+
+  const phoneNumber =
+    phone.replace(
+      /[^0-9]/g,
+      ""
+    );
+
+
+  if(
+    !/^01[0-9]{8,9}$/.test(
+      phoneNumber
+    )
+  ){
+
+    alert(
+      "전화번호를 정확하게 입력해주세요."
+    );
+
+    document
+      .getElementById("phoneInput")
+      .focus();
+
+    return;
+
+  }
+
+
+
+  /* 개인정보 동의 확인 */
+
+  if(!privacyAgree){
+
+    alert(
+      "개인정보 수집·이용에 동의해주세요."
+    );
+
+    document
+      .getElementById("privacyAgree")
+      .focus();
+
+    return;
+
+  }
+
+
+
+  /* 참여자 정보 저장 */
+
+  userName =
+    name;
+
+  userBirthYear =
+    birthYear;
+
+  userPhone =
+    formatPhone(phoneNumber);
+
+
+
+  /* 시험 초기화 */
 
   idx = 0;
 
-  answers = Array(questions.length).fill(null);
+  answers =
+    Array(questions.length).fill(null);
 
   seconds = 300;
 
   submitted = false;
 
-  startTime = Date.now();
+  startTime =
+    Date.now();
 
-  showScreen("examScreen");
+
+
+  showScreen(
+    "examScreen"
+  );
+
 
   render();
 
+
   clearInterval(timer);
 
-  timer = setInterval(updateTimer,1000);
+
+  timer =
+    setInterval(
+      updateTimer,
+      1000
+    );
 
 }
+
 
 
 /* =====================================================
@@ -918,53 +1397,103 @@ function startExam(){
 
 function render(){
 
-  const x = questions[idx];
+  const x =
+    questions[idx];
 
-  document.getElementById("qnum").textContent =
-    `QUESTION ${String(idx+1).padStart(2,"0")} / ${questions.length}`;
 
-  document.getElementById("question").textContent =
-    x.q;
+  document
+    .getElementById("qnum")
+    .textContent =
+      `QUESTION ${String(idx+1).padStart(2,"0")} / ${questions.length}`;
 
-  document.getElementById("progressText").textContent =
-    `${idx+1} / ${questions.length}`;
 
-  document.getElementById("bar").style.width =
-    ((idx+1)/questions.length*100) + "%";
+  document
+    .getElementById("question")
+    .textContent =
+      x.q;
+
+
+  document
+    .getElementById("progressText")
+    .textContent =
+      `${idx+1} / ${questions.length}`;
+
+
+  document
+    .getElementById("bar")
+    .style.width =
+      ((idx+1) /
+        questions.length *
+        100) +
+      "%";
+
 
   const options =
-    document.getElementById("options");
+    document
+      .getElementById("options");
 
-  options.innerHTML = "";
 
-  x.options.forEach((text,i)=>{
+  options.innerHTML =
+    "";
 
-    const button =
-      document.createElement("button");
 
-    button.className = "option";
+  x.options.forEach(
+    (text,i)=>{
 
-    if(answers[idx] === i){
-      button.classList.add("selected");
+      const button =
+        document
+          .createElement("button");
+
+
+      button.className =
+        "option";
+
+
+      if(
+        answers[idx] === i
+      ){
+
+        button.classList.add(
+          "selected"
+        );
+
+      }
+
+
+      button.innerHTML = `
+        <span class="option-num">
+          ${i+1}
+        </span>
+
+        <span>
+          ${text}
+        </span>
+      `;
+
+
+      button.onclick =
+        ()=>{
+          selectOption(i);
+        };
+
+
+      options.appendChild(
+        button
+      );
+
     }
+  );
 
-    button.innerHTML = `
-      <span class="option-num">${i+1}</span>
-      <span>${text}</span>
-    `;
 
-    button.onclick = ()=>selectOption(i);
-
-    options.appendChild(button);
-
-  });
-
-  document.getElementById("nextBtn").textContent =
-    idx === questions.length-1
-      ? "답안 제출 ✓"
-      : "다음 →";
+  document
+    .getElementById("nextBtn")
+    .textContent =
+      idx === questions.length-1
+        ? "답안 제출 ✓"
+        : "다음 →";
 
 }
+
 
 
 /* =====================================================
@@ -973,11 +1502,13 @@ function render(){
 
 function selectOption(i){
 
-  answers[idx] = i;
+  answers[idx] =
+    i;
 
   render();
 
 }
+
 
 
 /* =====================================================
@@ -986,14 +1517,23 @@ function selectOption(i){
 
 function nextQ(){
 
-  if(answers[idx] === null){
+  if(
+    answers[idx] === null
+  ){
 
-    alert("답을 하나 골라주세요!");
+    alert(
+      "답을 하나 골라주세요!"
+    );
 
     return;
+
   }
 
-  if(idx < questions.length-1){
+
+  if(
+    idx <
+    questions.length-1
+  ){
 
     idx++;
 
@@ -1008,6 +1548,7 @@ function nextQ(){
 }
 
 
+
 /* =====================================================
    타이머
    ===================================================== */
@@ -1016,34 +1557,57 @@ function updateTimer(){
 
   seconds--;
 
-  if(seconds <= 60){
 
-    document.getElementById("timer")
-      .classList.add("warning");
+  if(
+    seconds <= 60
+  ){
+
+    document
+      .getElementById("timer")
+      .classList.add(
+        "warning"
+      );
 
   }
 
-  if(seconds <= 0){
+
+  if(
+    seconds <= 0
+  ){
 
     clearInterval(timer);
 
-    alert("시험 시간이 종료되었습니다.");
+
+    alert(
+      "시험 시간이 종료되었습니다."
+    );
+
 
     finish();
 
+
     return;
+
   }
 
+
   const min =
-    Math.floor(seconds/60);
+    Math.floor(
+      seconds / 60
+    );
+
 
   const sec =
-    seconds%60;
+    seconds % 60;
 
-  document.getElementById("timer").textContent =
-    `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+  document
+    .getElementById("timer")
+    .textContent =
+      `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 
 }
+
 
 
 /* =====================================================
@@ -1054,57 +1618,78 @@ function finish(){
 
   clearInterval(timer);
 
+
   const score =
     answers.reduce(
       (sum,value,i)=>
-        sum + (value === questions[i].c ? 10 : 0),
+        sum +
+        (
+          value ===
+          questions[i].c
+            ? 10
+            : 0
+        ),
       0
     );
+
 
   const elapsedSeconds =
     Math.min(
       300,
       Math.max(
         0,
-        Math.floor((Date.now()-startTime)/1000)
+        Math.floor(
+          (
+            Date.now() -
+            startTime
+          ) / 1000
+        )
       )
     );
+
 
   let grade;
 
   let message;
 
+
+
   if(score >= 90){
 
-    grade = "A+";
+    grade =
+      "A+";
 
     message =
       "정신건강 상식이 아주 탄탄하네요!<br>나와 주변 사람의 마음을 잘 살펴볼 수 있는 멋진 감각이에요.";
 
   }else if(score >= 80){
 
-    grade = "A";
+    grade =
+      "A";
 
     message =
       "정신건강 상식이 꽤 탄탄해요!<br>조금만 더 알아두면 더욱 든든하겠어요.";
 
   }else if(score >= 70){
 
-    grade = "B";
+    grade =
+      "B";
 
     message =
       "기본적인 정신건강 상식을 잘 알고 있어요!<br>이번 기회에 조금 더 알아보는 건 어떨까요?";
 
   }else if(score >= 60){
 
-    grade = "C";
+    grade =
+      "C";
 
     message =
       "아직 헷갈리는 내용이 있네요.<br>정신건강에 대해 조금 더 알아보면 좋겠어요.";
 
   }else{
 
-    grade = "D";
+    grade =
+      "D";
 
     message =
       "이번 기회에 정신건강 상식을 차근차근 알아봐요!<br>알아가는 것부터가 건강을 돌보는 시작이에요.";
@@ -1112,33 +1697,63 @@ function finish(){
   }
 
 
-  document.getElementById("resultBadge").textContent =
-    grade;
 
-  document.getElementById("resultScore").textContent =
-    `${score}점`;
-
-  document.getElementById("resultMessage").innerHTML =
-    message;
-
-  document.getElementById("resultName").textContent =
-    userName;
-
-  document.getElementById("resultScoreSmall").textContent =
-    `${score}점`;
-
-  document.getElementById("resultGrade").textContent =
-    grade;
-
-  document.getElementById("resultTime").textContent =
-    formatTime(elapsedSeconds);
+  document
+    .getElementById("resultBadge")
+    .textContent =
+      grade;
 
 
-  showScreen("resultScreen");
+  document
+    .getElementById("resultScore")
+    .textContent =
+      `${score}점`;
+
+
+  document
+    .getElementById("resultMessage")
+    .innerHTML =
+      message;
+
+
+  document
+    .getElementById("resultName")
+    .textContent =
+      userName;
+
+
+  document
+    .getElementById("resultScoreSmall")
+    .textContent =
+      `${score}점`;
+
+
+  document
+    .getElementById("resultGrade")
+    .textContent =
+      grade;
+
+
+  document
+    .getElementById("resultTime")
+    .textContent =
+      formatTime(
+        elapsedSeconds
+      );
+
+
+
+  showScreen(
+    "resultScreen"
+  );
+
 
   createConfetti();
 
-  /* Google Sheets로 결과 저장 */
+
+
+  /* Google Sheets 저장 */
+
   saveResult(
     score,
     grade,
@@ -1148,21 +1763,31 @@ function finish(){
 }
 
 
+
 /* =====================================================
    시간 표시
    ===================================================== */
 
-function formatTime(totalSeconds){
+function formatTime(
+  totalSeconds
+){
 
   const min =
-    Math.floor(totalSeconds/60);
+    Math.floor(
+      totalSeconds / 60
+    );
+
 
   const sec =
-    totalSeconds%60;
+    totalSeconds % 60;
 
-  return `${min}분 ${sec}초`;
+
+  return (
+    `${min}분 ${sec}초`
+  );
 
 }
+
 
 
 /* =====================================================
@@ -1173,27 +1798,40 @@ function restartExam(){
 
   idx = 0;
 
-  answers = Array(questions.length).fill(null);
+  answers =
+    Array(questions.length).fill(null);
 
   seconds = 300;
 
   submitted = false;
 
-  startTime = Date.now();
+  startTime =
+    Date.now();
 
-  showScreen("examScreen");
+
+  showScreen(
+    "examScreen"
+  );
+
 
   render();
 
+
   clearInterval(timer);
 
-  timer = setInterval(updateTimer,1000);
+
+  timer =
+    setInterval(
+      updateTimer,
+      1000
+    );
 
 }
 
 
+
 /* =====================================================
-   합격 축하 효과
+   축하 효과
    ===================================================== */
 
 function createConfetti(){
@@ -1207,60 +1845,120 @@ function createConfetti(){
     "✚"
   ];
 
-  for(let i=0;i<45;i++){
+
+  for(
+    let i=0;
+    i<45;
+    i++
+  ){
 
     const piece =
-      document.createElement("div");
+      document
+        .createElement("div");
+
 
     piece.className =
       "confetti";
 
+
     piece.textContent =
       symbols[
         Math.floor(
-          Math.random()*symbols.length
+          Math.random() *
+          symbols.length
         )
       ];
 
+
     piece.style.left =
-      Math.random()*100 + "vw";
+      Math.random() *
+      100 +
+      "vw";
+
 
     piece.style.top =
       "-30px";
 
+
     piece.style.fontSize =
-      (10 + Math.random()*15) + "px";
+      (
+        10 +
+        Math.random() *
+        15
+      ) +
+      "px";
+
 
     piece.style.animationDelay =
-      (Math.random()*1.2) + "s";
+      (
+        Math.random() *
+        1.2
+      ) +
+      "s";
+
 
     piece.style.transform =
       `rotate(${Math.random()*360}deg)`;
 
-    document.body.appendChild(piece);
 
-    setTimeout(()=>{
-      piece.remove();
-    },4000);
+    document
+      .body
+      .appendChild(piece);
+
+
+    setTimeout(
+      ()=>{
+        piece.remove();
+      },
+      4000
+    );
 
   }
 
 }
 
 
+
 /* =====================================================
-   엔터키로 시험 시작
+   전화번호 자동 형식
+   ===================================================== */
+
+document
+  .getElementById("phoneInput")
+  .addEventListener(
+    "input",
+    function(){
+
+      this.value =
+        formatPhone(
+          this.value
+        );
+
+    }
+  );
+
+
+
+/* =====================================================
+   엔터키
    ===================================================== */
 
 document
   .getElementById("nameInput")
-  .addEventListener("keydown",function(e){
+  .addEventListener(
+    "keydown",
+    function(e){
 
-    if(e.key === "Enter"){
-      startExam();
+      if(
+        e.key === "Enter"
+      ){
+
+        startExam();
+
+      }
+
     }
-
-  });
+  );
 
 </script>
 
