@@ -4,134 +4,1265 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>정신건강 고사 | 광명시정신건강복지센터</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;600;700;900&display=swap');
-:root{--ink:#171717;--paper:#fffdf6;--pink:#ff5ca8;--lime:#c7ff45;--blue:#5c7cff;--yellow:#ffe14d;--purple:#a96bff}
-*{box-sizing:border-box} body{margin:0;color:var(--ink);font-family:'Noto Sans KR',sans-serif;background:#dff6ff;overflow-x:hidden}
-button,input{font:inherit}.screen{min-height:100vh;display:none;padding:22px}.screen.active{display:flex}
-.wrap{width:min(960px,100%);margin:auto}
-.doodle{position:fixed;z-index:0;pointer-events:none;font-size:42px;animation:float 3s ease-in-out infinite}
-.d1{left:3%;top:13%}.d2{right:4%;top:22%;animation-delay:.7s}.d3{left:8%;bottom:12%;animation-delay:1.2s}.d4{right:8%;bottom:8%;animation-delay:1.8s}
-@keyframes float{50%{transform:translateY(-12px) rotate(5deg)}}
-.card{position:relative;z-index:1;background:var(--paper);border:4px solid var(--ink);border-radius:28px;box-shadow:10px 10px 0 var(--ink);padding:34px}
-.sticker{display:inline-block;border:3px solid var(--ink);background:var(--lime);padding:7px 14px;border-radius:999px;font-weight:900;transform:rotate(-3deg);box-shadow:4px 4px 0 var(--ink)}
-h1,h2{font-family:Jua,sans-serif;margin:12px 0;line-height:1.05}h1{font-size:clamp(48px,9vw,88px)}h2{font-size:42px}
-.sub{font-size:18px;font-weight:700;line-height:1.65}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:25px;align-items:center}
-.character{height:260px;border:4px solid var(--ink);border-radius:35px;background:var(--pink);display:flex;align-items:center;justify-content:center;font-size:125px;transform:rotate(2deg);box-shadow:8px 8px 0 var(--ink);animation:bob 2.4s infinite ease-in-out}
-@keyframes bob{50%{transform:rotate(-2deg) translateY(-8px)}}
-input{width:100%;padding:16px;border:3px solid var(--ink);border-radius:15px;background:white;outline:none;margin:8px 0 14px;font-size:17px}input:focus{box-shadow:5px 5px 0 var(--blue)}
-.btn{border:3px solid var(--ink);background:var(--yellow);padding:15px 24px;border-radius:16px;font-weight:900;cursor:pointer;box-shadow:5px 5px 0 var(--ink);transition:.15s;display:inline-block}.btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}.btn.primary{background:var(--pink)}.btn.blue{background:var(--blue);color:white}
-.small{font-size:13px;color:#555}.rules{display:grid;gap:10px;margin:22px 0}.rule{border:2px dashed var(--ink);padding:12px 15px;border-radius:14px;background:white}
-.exam{width:min(900px,100%);margin:auto}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:15px;position:sticky;top:8px;z-index:5}.timer{background:var(--ink);color:white;border-radius:999px;padding:10px 18px;font-weight:900}.progress{height:13px;background:white;border:3px solid var(--ink);border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--pink);transition:.3s;width:0}
-.qcard{margin-top:18px}.qnum{font-weight:900;color:#7b50ff}.question{font-family:Jua,sans-serif;font-size:32px;line-height:1.35;margin:12px 0 22px}.choices{display:grid;gap:12px}.choice{position:relative;text-align:left;border:3px solid var(--ink);background:white;border-radius:17px;padding:16px 18px;cursor:pointer;font-weight:700;transition:.15s}.choice:hover{background:#f4f4ff;transform:translateX(4px)}.choice.selected{background:var(--lime);box-shadow:5px 5px 0 var(--ink);transform:translateX(3px)}.choice .mark{display:inline-flex;width:32px;height:32px;border:3px solid var(--ink);border-radius:50%;align-items:center;justify-content:center;margin-right:9px;background:white}.nav{display:flex;justify-content:space-between;margin-top:24px;gap:12px}.nav .btn{min-width:120px}
-.result{text-align:center}.score{font-family:Jua;font-size:90px;margin:10px}.badge{display:inline-block;background:var(--lime);border:3px solid var(--ink);padding:10px 20px;border-radius:99px;font-weight:900;box-shadow:4px 4px 0 var(--ink)}.tipbox{text-align:left;margin-top:25px;background:white;border:3px solid var(--ink);border-radius:18px;padding:20px}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}.confetti i{position:absolute;width:10px;height:20px;animation:fall 2.2s linear forwards}@keyframes fall{from{transform:translateY(-30px) rotate(0)}to{transform:translateY(110vh) rotate(700deg)}}
-@media(max-width:700px){.screen{padding:14px}.card{padding:22px;border-radius:22px;box-shadow:7px 7px 0 var(--ink)}.hero{grid-template-columns:1fr}.character{height:180px;font-size:90px}h2{font-size:34px}.question{font-size:26px}.topbar{position:relative}.nav .btn{min-width:0;flex:1}.doodle{font-size:28px}}
+
+:root{
+  --ink:#171717;
+  --paper:#fffdf6;
+  --pink:#ff5ca8;
+  --lime:#c7ff45;
+  --blue:#5c7cff;
+  --yellow:#ffe14d;
+  --purple:#a96bff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:'Noto Sans KR',sans-serif;
+  background:#dff6ff;
+  overflow-x:hidden;
+}
+
+button,input{
+  font:inherit;
+}
+
+.screen{
+  min-height:100vh;
+  display:none;
+  padding:22px;
+}
+
+.screen.active{
+  display:flex;
+}
+
+.wrap{
+  width:min(960px,100%);
+  margin:auto;
+}
+
+.doodle{
+  position:fixed;
+  z-index:0;
+  pointer-events:none;
+  font-size:42px;
+  animation:float 3s ease-in-out infinite;
+}
+
+.d1{left:3%;top:13%}
+.d2{right:4%;top:22%;animation-delay:.7s}
+.d3{left:8%;bottom:12%;animation-delay:1.2s}
+.d4{right:8%;bottom:8%;animation-delay:1.8s}
+
+@keyframes float{
+  50%{transform:translateY(-12px) rotate(5deg)}
+}
+
+.card{
+  position:relative;
+  z-index:1;
+  background:var(--paper);
+  border:4px solid var(--ink);
+  border-radius:24px;
+  box-shadow:10px 10px 0 var(--ink);
+}
+
+.cover{
+  padding:38px 30px;
+  text-align:center;
+}
+
+.stamp{
+  display:inline-block;
+  background:var(--pink);
+  border:3px solid var(--ink);
+  padding:7px 15px;
+  font-weight:900;
+  transform:rotate(-2deg);
+  box-shadow:4px 4px 0 var(--ink);
+  margin-bottom:20px;
+}
+
+h1{
+  font-family:'Jua',sans-serif;
+  font-size:clamp(48px,9vw,88px);
+  line-height:.95;
+  margin:5px 0 18px;
+  letter-spacing:-2px;
+}
+
+.subtitle{
+  font-weight:700;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.exam-info{
+  margin:28px auto;
+  max-width:650px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.info-box{
+  border:3px solid var(--ink);
+  background:#fff;
+  padding:14px 8px;
+  border-radius:15px;
+  font-weight:900;
+}
+
+.info-box small{
+  display:block;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.start-box{
+  margin:25px auto 0;
+  max-width:500px;
+}
+
+.name-input{
+  width:100%;
+  padding:16px 18px;
+  border:3px solid var(--ink);
+  border-radius:14px;
+  background:#fff;
+  outline:none;
+  font-size:18px;
+  font-weight:700;
+  text-align:center;
+}
+
+.name-input:focus{
+  box-shadow:5px 5px 0 var(--lime);
+}
+
+.btn{
+  width:100%;
+  border:3px solid var(--ink);
+  border-radius:15px;
+  padding:15px 20px;
+  margin-top:12px;
+  cursor:pointer;
+  font-weight:900;
+  font-size:18px;
+  background:var(--lime);
+  box-shadow:5px 5px 0 var(--ink);
+  transition:.12s;
+}
+
+.btn:hover{
+  transform:translate(2px,2px);
+  box-shadow:3px 3px 0 var(--ink);
+}
+
+.btn:active{
+  transform:translate(5px,5px);
+  box-shadow:0 0 0 var(--ink);
+}
+
+.notice{
+  margin-top:16px;
+  font-size:12px;
+  line-height:1.6;
+  color:#555;
+}
+
+.exam-wrap{
+  width:min(820px,100%);
+  margin:auto;
+}
+
+.exam-header{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.exam-title{
+  font-family:'Jua',sans-serif;
+  font-size:30px;
+}
+
+.timer{
+  background:var(--yellow);
+  border:3px solid var(--ink);
+  border-radius:13px;
+  padding:9px 14px;
+  font-weight:900;
+  min-width:105px;
+  text-align:center;
+  box-shadow:4px 4px 0 var(--ink);
+}
+
+.timer.warning{
+  background:var(--pink);
+  animation:pulse .8s infinite alternate;
+}
+
+@keyframes pulse{
+  to{transform:scale(1.05)}
+}
+
+.progress{
+  height:13px;
+  border:3px solid var(--ink);
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:18px;
+}
+
+.progress-bar{
+  height:100%;
+  background:var(--blue);
+  width:10%;
+  transition:.25s;
+}
+
+.question-card{
+  padding:30px;
+}
+
+.q-number{
+  display:inline-block;
+  background:var(--lime);
+  border:3px solid var(--ink);
+  padding:6px 12px;
+  font-weight:900;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+.question{
+  font-size:clamp(21px,4vw,30px);
+  font-weight:900;
+  line-height:1.45;
+  margin-bottom:22px;
+  word-break:keep-all;
+}
+
+.options{
+  display:grid;
+  gap:12px;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  border:3px solid var(--ink);
+  background:#fff;
+  border-radius:15px;
+  padding:16px 17px;
+  cursor:pointer;
+  font-weight:700;
+  line-height:1.5;
+  transition:.15s;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.option:hover{
+  transform:translateX(4px);
+  background:#f7f7f7;
+}
+
+.option.selected{
+  background:var(--pink);
+  transform:translateX(6px);
+  box-shadow:5px 5px 0 var(--ink);
+  animation:selectPop .2s ease-out;
+}
+
+@keyframes selectPop{
+  50%{transform:translateX(6px) scale(1.02)}
+}
+
+.option-num{
+  flex:none;
+  width:29px;
+  height:29px;
+  border:2px solid var(--ink);
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:900;
+  background:#fff;
+}
+
+.exam-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:20px;
+}
+
+.progress-text{
+  font-weight:900;
+  font-size:14px;
+}
+
+.next-btn{
+  width:auto;
+  min-width:150px;
+  margin:0;
+  background:var(--blue);
+  color:#fff;
+}
+
+.result-card{
+  padding:35px 25px;
+  text-align:center;
+}
+
+.result-badge{
+  display:inline-block;
+  font-family:'Jua',sans-serif;
+  font-size:62px;
+  padding:20px 30px;
+  border:4px solid var(--ink);
+  border-radius:25px;
+  background:var(--yellow);
+  box-shadow:8px 8px 0 var(--ink);
+  margin:15px 0 25px;
+}
+
+.result-score{
+  font-family:'Jua',sans-serif;
+  font-size:54px;
+  margin:10px 0;
+}
+
+.result-message{
+  font-size:18px;
+  font-weight:700;
+  line-height:1.7;
+  word-break:keep-all;
+}
+
+.result-info{
+  margin:25px auto;
+  max-width:430px;
+  border:3px solid var(--ink);
+  border-radius:15px;
+  overflow:hidden;
+  text-align:left;
+}
+
+.result-row{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 15px;
+  border-bottom:2px solid var(--ink);
+}
+
+.result-row:last-child{
+  border-bottom:0;
+}
+
+.result-row span:first-child{
+  font-weight:900;
+}
+
+.result-buttons{
+  max-width:430px;
+  margin:auto;
+}
+
+.secondary{
+  background:#fff;
+}
+
+.confetti{
+  position:fixed;
+  width:10px;
+  height:16px;
+  z-index:10;
+  pointer-events:none;
+  animation:fall 2.5s linear forwards;
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(-20px) rotate(0);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:600px){
+
+  .screen{
+    padding:14px;
+  }
+
+  .card{
+    box-shadow:6px 6px 0 var(--ink);
+    border-width:3px;
+  }
+
+  .cover{
+    padding:30px 18px;
+  }
+
+  h1{
+    font-size:55px;
+  }
+
+  .subtitle{
+    font-size:15px;
+  }
+
+  .exam-info{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .info-box{
+    padding:10px;
+  }
+
+  .question-card{
+    padding:22px 16px;
+  }
+
+  .exam-header{
+    align-items:flex-start;
+  }
+
+  .exam-title{
+    font-size:24px;
+  }
+
+  .timer{
+    font-size:14px;
+    min-width:90px;
+    padding:8px 10px;
+  }
+
+  .question{
+    font-size:21px;
+  }
+
+  .option{
+    font-size:15px;
+    padding:13px;
+  }
+
+  .exam-footer{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .next-btn{
+    width:100%;
+  }
+
+  .result-badge{
+    font-size:45px;
+    padding:15px 20px;
+  }
+
+  .result-score{
+    font-size:45px;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="doodle d1">✦</div><div class="doodle d2">☻</div><div class="doodle d3">♡</div><div class="doodle d4">✎</div>
 
-<section id="start" class="screen active">
-<div class="wrap card">
-  <div class="hero">
-    <div>
-      <span class="sticker">2026 정신건강 고사</span>
-      <h1>정신건강<br><span style="color:var(--pink)">고사</span></h1>
-      <p class="sub">내 마음을 얼마나 알고 있을까?<br>지금부터 가볍게 확인해보자. 🧠</p>
-      <div class="rules">
-        <div class="rule">📌 총 10문제 · 중학생도 풀 수 있는 난이도</div>
-        <div class="rule">⏱️ 제한시간 5분 · 한 문제씩 풀기</div>
-        <div class="rule">💡 정답보다 <b>내 마음을 알아가는 것</b>이 더 중요!</div>
+<div class="doodle d1">🧠</div>
+<div class="doodle d2">✏️</div>
+<div class="doodle d3">💭</div>
+<div class="doodle d4">🦛</div>
+
+<!-- 시작 화면 -->
+<section id="startScreen" class="screen active">
+  <div class="wrap">
+    <div class="card cover">
+
+      <div class="stamp">2026 광명 청년 정신건강 캠페인</div>
+
+      <h1>정신건강<br>고사</h1>
+
+      <div class="subtitle">
+        당신의 정신건강 상식,<br>
+        몇 점인지 확인해보자!
       </div>
-      <label><b>수험생 이름</b></label>
-      <input id="name" maxlength="12" placeholder="이름을 입력해 주세요">
-      <button class="btn primary" onclick="startExam()">시험 시작하기 →</button>
-      <p class="small">※ 본 시험은 정신건강에 대한 기본적인 이해를 확인하기 위한 캠페인용 퀴즈입니다.</p>
+
+      <div class="exam-info">
+        <div class="info-box">
+          <small>문항</small>
+          10문항
+        </div>
+
+        <div class="info-box">
+          <small>제한시간</small>
+          5분
+        </div>
+
+        <div class="info-box">
+          <small>난이도</small>
+          ★★★☆☆
+        </div>
+      </div>
+
+      <div class="start-box">
+
+        <input
+          id="nameInput"
+          class="name-input"
+          type="text"
+          maxlength="20"
+          placeholder="이름을 입력해주세요"
+          autocomplete="off"
+        >
+
+        <button class="btn" onclick="startExam()">
+          시험 시작하기 →
+        </button>
+
+        <div class="notice">
+          ※ 이름과 시험 결과(점수, 등급, 소요시간)가 이벤트 운영을 위해 저장됩니다.
+        </div>
+
+      </div>
     </div>
-    <div class="character">🦛</div>
   </div>
-</div>
 </section>
 
-<section id="exam" class="screen">
-<div class="exam">
-  <div class="topbar">
-    <span class="sticker">정신건강 고사</span>
-    <div class="timer">⏱ <span id="time">05:00</span></div>
-  </div>
-  <div class="progress"><div id="bar"></div></div>
-  <div class="card qcard">
-    <div class="qnum" id="qnum"></div>
-    <div class="question" id="question"></div>
-    <div class="choices" id="choices"></div>
-    <div class="nav">
-      <button class="btn" onclick="prevQ()">← 이전</button>
-      <button class="btn blue" onclick="nextQ()" id="nextBtn">다음 →</button>
+
+<!-- 시험 화면 -->
+<section id="examScreen" class="screen">
+
+  <div class="exam-wrap">
+
+    <div class="exam-header">
+      <div class="exam-title">정신건강 고사</div>
+      <div id="timer" class="timer">05:00</div>
+    </div>
+
+    <div class="progress">
+      <div id="bar" class="progress-bar"></div>
+    </div>
+
+    <div class="card question-card">
+
+      <div id="qnum" class="q-number">
+        QUESTION 01 / 10
+      </div>
+
+      <div id="question" class="question"></div>
+
+      <div id="options" class="options"></div>
+
+      <div class="exam-footer">
+        <div id="progressText" class="progress-text">
+          1 / 10
+        </div>
+
+        <button
+          id="nextBtn"
+          class="btn next-btn"
+          onclick="nextQ()"
+        >
+          다음 →
+        </button>
+      </div>
+
     </div>
   </div>
-</div>
+
 </section>
 
-<section id="result" class="screen">
-<div class="wrap card result">
-  <span class="sticker">시험 종료!</span>
-  <h2 id="resultTitle">수고했어!</h2>
-  <div class="score" id="score">0점</div>
-  <div class="badge" id="badge"></div>
-  <p class="sub" id="resultMsg"></p>
-  <div class="tipbox">
-    <b>🧠 오늘의 마음 팁</b>
-    <p>힘든 감정이 오래 지속되거나 혼자 해결하기 어렵다면, 믿을 수 있는 어른이나 친구에게 이야기해도 괜찮아. 필요하다면 정신건강 전문가의 도움을 받는 것도 좋은 방법이야.</p>
+
+<!-- 결과 화면 -->
+<section id="resultScreen" class="screen">
+
+  <div class="wrap">
+
+    <div class="card result-card">
+
+      <div class="stamp">시험 종료!</div>
+
+      <h2 style="font-family:'Jua',sans-serif;font-size:40px;margin:10px 0;">
+        정신건강 고사 결과
+      </h2>
+
+      <div id="resultBadge" class="result-badge">
+        A+
+      </div>
+
+      <div id="resultScore" class="result-score">
+        100점
+      </div>
+
+      <div id="resultMessage" class="result-message">
+        정신건강 상식이 아주 탄탄하네요!
+      </div>
+
+      <div class="result-info">
+
+        <div class="result-row">
+          <span>응시자</span>
+          <span id="resultName"></span>
+        </div>
+
+        <div class="result-row">
+          <span>점수</span>
+          <span id="resultScoreSmall"></span>
+        </div>
+
+        <div class="result-row">
+          <span>등급</span>
+          <span id="resultGrade"></span>
+        </div>
+
+        <div class="result-row">
+          <span>소요시간</span>
+          <span id="resultTime"></span>
+        </div>
+
+      </div>
+
+      <div class="result-buttons">
+
+        <button class="btn" onclick="restartExam()">
+          다시 풀기
+        </button>
+
+        <button class="btn secondary" onclick="location.reload()">
+          처음으로
+        </button>
+
+      </div>
+
+    </div>
+
   </div>
-  <br><button class="btn primary" onclick="location.reload()">다시 풀기 ↻</button>
-</div>
-<div class="confetti" id="confetti"></div>
+
 </section>
+
 
 <script>
-const questions=[
-{q:"스트레스를 많이 받을 때 나타날 수 있는 반응으로 가장 알맞은 것은?",a:["잠이 잘 안 오거나 예민해질 수 있다","항상 웃게 된다","무조건 열이 난다","절대 피곤하지 않다"],c:0},
-{q:"친구가 요즘 계속 우울해 보이며 '아무것도 하기 싫어'라고 말한다. 가장 적절한 반응은?",a:["'그 정도는 누구나 그래'라고 넘긴다","일단 이야기를 들어주고, 필요하면 도움을 받을 수 있다고 알려준다","기분을 바꾸라고 강요한다","친구의 이야기를 다른 사람에게 재미로 말한다"],c:1},
-{q:"건강한 수면 습관으로 가장 알맞은 것은?",a:["매일 잠자는 시간이 크게 달라도 괜찮다","잠들기 직전까지 스마트폰을 오래 사용한다","가능하면 일정한 시간에 자고 일어난다","잠이 안 오면 밤새 게임한다"],c:2},
-{q:"화가 많이 났을 때 감정을 조절하는 데 도움이 될 수 있는 방법은?",a:["상대에게 바로 소리를 지른다","잠시 자리를 벗어나 숨을 천천히 쉬어본다","물건을 던진다","인터넷에 상대를 공개적으로 비난한다"],c:1},
-{q:"정신건강에 대한 설명으로 가장 알맞은 것은?",a:["마음이 힘든 사람에게만 해당한다","몸의 건강과는 전혀 관계가 없다","누구에게나 중요하고 평소에도 돌볼 수 있다","한 번 나빠지면 좋아질 수 없다"],c:2},
-{q:"친구에게 고민을 들었을 때 가장 좋은 태도는?",a:["내가 해결해줘야 한다고 생각한다","끝까지 듣고 친구가 원하는 도움을 물어본다","다른 친구들에게 바로 알려준다","'별것 아니야'라고 말한다"],c:1},
-{q:"시험이나 발표를 앞두고 긴장되는 것은 어떻게 볼 수 있을까?",a:["항상 이상한 일이다","어느 정도의 긴장은 자연스러운 반응일 수 있다","긴장하면 반드시 정신질환이다","긴장하면 절대 실력 발휘를 못 한다"],c:1},
-{q:"힘든 일이 생겼을 때 도움을 요청하는 것은?",a:["약한 사람만 하는 행동이다","부끄러운 행동이다","문제를 해결하기 위한 건강한 방법 중 하나다","절대 하면 안 된다"],c:2},
-{q:"다음 중 마음을 돌보는 방법으로 가장 적절하지 않은 것은?",a:["산책이나 가벼운 운동하기","믿을 수 있는 사람과 이야기하기","규칙적으로 생활하기","힘든 감정을 무조건 혼자 참기"],c:3},
-{q:"정신건강 전문가에게 도움을 요청할 수 있는 상황은?",a:["일상생활이 힘들 정도로 마음의 어려움이 계속될 때","기분이 좋은 날","친구와 재미있게 놀 때","시험을 다 끝냈을 때"],c:0}
-];
-let idx=0, answers=Array(questions.length).fill(null), seconds=300, timer;
 
-function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
+/* =====================================================
+   Google Apps Script 연결 주소
+   ===================================================== */
+
+const GOOGLE_SHEET_WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbxAVBFXnk9S2tVnEtcwEGrZHSZTH3BzelFl5UOACJ9k5NnIbi_JlCztS-np7Qka6TE-/exec";
+
+
+/* =====================================================
+   결과 전송
+   ===================================================== */
+
+let submitted = false;
+
+async function saveResult(score, grade, elapsedSeconds){
+
+  if(!GOOGLE_SHEET_WEB_APP_URL || submitted){
+    return;
+  }
+
+  submitted = true;
+
+  const data = {
+    submittedAt: new Date().toISOString(),
+    name: userName,
+    score: score,
+    grade: grade,
+    elapsedSeconds: elapsedSeconds
+  };
+
+  try{
+
+    await fetch(GOOGLE_SHEET_WEB_APP_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{
+        "Content-Type":"text/plain;charset=utf-8"
+      },
+      body:JSON.stringify(data)
+    });
+
+  }catch(error){
+
+    console.error("결과 저장 오류:",error);
+
+  }
+}
+
+
+/* =====================================================
+   문제
+   ===================================================== */
+
+const questions = [
+
+  {
+    q:"정신건강을 지키기 위해 가장 기본적으로 중요한 것은?",
+    options:[
+      "잠을 최대한 줄이는 것",
+      "규칙적인 생활과 충분한 휴식을 유지하는 것",
+      "힘든 일이 있어도 무조건 참는 것",
+      "스트레스를 받지 않도록 사람을 모두 피하는 것"
+    ],
+    c:1
+  },
+
+  {
+    q:"다음 중 스트레스를 건강하게 관리하는 방법으로 가장 적절한 것은?",
+    options:[
+      "문제가 생기면 무조건 혼자 해결한다",
+      "스트레스를 느껴도 아무렇지 않은 척한다",
+      "운동, 휴식, 대화 등 자신에게 맞는 방법을 활용한다",
+      "잠을 줄여서 해야 할 일을 모두 끝낸다"
+    ],
+    c:2
+  },
+
+  {
+    q:"친구가 최근 계속 우울해하고 일상생활이 힘들다고 한다. 가장 적절한 반응은?",
+    options:[
+      "다들 힘드니까 참으라고 한다",
+      "긍정적으로 생각하라고만 한다",
+      "이야기를 들어주고 필요하다면 전문가의 도움을 권한다",
+      "기분이 좋아질 때까지 연락하지 않는다"
+    ],
+    c:2
+  },
+
+  {
+    q:"정신건강의학과 진료를 받는 것에 대한 설명으로 가장 적절한 것은?",
+    options:[
+      "정신적으로 약한 사람만 진료를 받는다",
+      "심각한 문제가 있는 사람만 이용할 수 있다",
+      "정신건강 문제를 이해하고 회복을 돕기 위해 이용할 수 있다",
+      "한 번 진료를 받으면 평생 치료받아야 한다"
+    ],
+    c:2
+  },
+
+  {
+    q:"다음 중 우울감이 지속될 때 도움이 될 수 있는 행동은?",
+    options:[
+      "혼자서 무조건 참는다",
+      "생활리듬을 유지하고 주변 사람이나 전문가에게 도움을 요청한다",
+      "아무것도 하지 않고 계속 누워 있는다",
+      "힘든 감정을 숨기기 위해 술을 마신다"
+    ],
+    c:1
+  },
+
+  {
+    q:"불안할 때 나타날 수 있는 신체적 반응으로 적절한 것은?",
+    options:[
+      "심장이 빨리 뛰거나 숨이 가빠질 수 있다",
+      "항상 기억력이 좋아진다",
+      "무조건 식욕이 증가한다",
+      "키가 갑자기 커진다"
+    ],
+    c:0
+  },
+
+  {
+    q:"정신건강에 대한 설명으로 옳은 것은?",
+    options:[
+      "정신건강은 정신질환이 있는 사람에게만 중요하다",
+      "정신건강은 누구에게나 중요하며 상황에 따라 달라질 수 있다",
+      "정신건강은 한번 나빠지면 회복할 수 없다",
+      "정신건강 문제는 의지만 있으면 모두 해결할 수 있다"
+    ],
+    c:1
+  },
+
+  {
+    q:"힘든 상황에서 주변 사람에게 도움을 요청하는 것은?",
+    options:[
+      "무능한 행동이다",
+      "남에게 피해를 주는 행동이다",
+      "자신을 돌보기 위한 건강한 대처 방법이 될 수 있다",
+      "문제를 더 크게 만드는 행동이다"
+    ],
+    c:2
+  },
+
+  {
+    q:"다음 중 정신건강에 도움이 되는 생활습관으로 가장 적절한 것은?",
+    options:[
+      "수면시간을 매일 다르게 한다",
+      "식사를 자주 거른다",
+      "적절한 수면, 식사, 신체활동을 유지한다",
+      "스트레스를 받을수록 카페인을 계속 마신다"
+    ],
+    c:2
+  },
+
+  {
+    q:"정신건강 문제에 대해 가장 바람직한 태도는?",
+    options:[
+      "정신건강 문제를 가진 사람을 피한다",
+      "정신건강 문제는 의지가 약해서 생긴다고 생각한다",
+      "정신건강 문제를 편견 없이 이해하고 필요한 도움을 받을 수 있도록 한다",
+      "정신건강 문제에 대해서는 이야기하지 않는 것이 좋다"
+    ],
+    c:2
+  }
+
+];
+
+
+/* =====================================================
+   시험 상태
+   ===================================================== */
+
+let idx = 0;
+
+let answers = Array(questions.length).fill(null);
+
+let seconds = 300;
+
+let timer;
+
+let startTime = null;
+
+let userName = "";
+
+
+/* =====================================================
+   화면 전환
+   ===================================================== */
+
+function showScreen(id){
+
+  document.querySelectorAll(".screen").forEach(screen=>{
+    screen.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =====================================================
+   시험 시작
+   ===================================================== */
+
 function startExam(){
- const n=document.getElementById('name').value.trim();
- if(!n){alert('수험생 이름을 입력해 주세요!');return}
- show('exam'); render(); timer=setInterval(()=>{seconds--; updateTime(); if(seconds<=0){clearInterval(timer);finish()}},1000);
+
+  const input =
+    document.getElementById("nameInput").value.trim();
+
+  if(!input){
+
+    alert("이름을 입력해주세요!");
+
+    document.getElementById("nameInput").focus();
+
+    return;
+  }
+
+  userName = input;
+
+  idx = 0;
+
+  answers = Array(questions.length).fill(null);
+
+  seconds = 300;
+
+  submitted = false;
+
+  startTime = Date.now();
+
+  showScreen("examScreen");
+
+  render();
+
+  clearInterval(timer);
+
+  timer = setInterval(updateTimer,1000);
+
 }
-function updateTime(){let m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');document.getElementById('time').textContent=`${m}:${s}`; if(seconds<=30)document.querySelector('.timer').style.background='var(--pink)'}
+
+
+/* =====================================================
+   문제 표시
+   ===================================================== */
+
 function render(){
- const x=questions[idx];document.getElementById('qnum').textContent=`QUESTION ${String(idx+1).padStart(2,'0')} / ${questions.length}`;
- document.getElementById('question').textContent=x.q;
- document.getElementById('bar').style.width=((idx+1)/questions.length*100)+'%';
- const box=document.getElementById('choices');box.innerHTML='';
- x.a.forEach((t,i)=>{let b=document.createElement('button');b.className='choice'+(answers[idx]===i?' selected':'');b.innerHTML=`<span class="mark">${String.fromCharCode(65+i)}</span>${t}`;b.onclick=()=>{answers[idx]=i;render()};box.appendChild(b)});
- document.getElementById('nextBtn').textContent=idx===questions.length-1?'답안 제출 ✓':'다음 →';
+
+  const x = questions[idx];
+
+  document.getElementById("qnum").textContent =
+    `QUESTION ${String(idx+1).padStart(2,"0")} / ${questions.length}`;
+
+  document.getElementById("question").textContent =
+    x.q;
+
+  document.getElementById("progressText").textContent =
+    `${idx+1} / ${questions.length}`;
+
+  document.getElementById("bar").style.width =
+    ((idx+1)/questions.length*100) + "%";
+
+  const options =
+    document.getElementById("options");
+
+  options.innerHTML = "";
+
+  x.options.forEach((text,i)=>{
+
+    const button =
+      document.createElement("button");
+
+    button.className = "option";
+
+    if(answers[idx] === i){
+      button.classList.add("selected");
+    }
+
+    button.innerHTML = `
+      <span class="option-num">${i+1}</span>
+      <span>${text}</span>
+    `;
+
+    button.onclick = ()=>selectOption(i);
+
+    options.appendChild(button);
+
+  });
+
+  document.getElementById("nextBtn").textContent =
+    idx === questions.length-1
+      ? "답안 제출 ✓"
+      : "다음 →";
+
 }
-function prevQ(){if(idx>0){idx--;render()}}
-function nextQ(){if(answers[idx]===null){alert('답을 하나 골라주세요!');return} if(idx<questions.length-1){idx++;render()}else finish()}
+
+
+/* =====================================================
+   답안 선택
+   ===================================================== */
+
+function selectOption(i){
+
+  answers[idx] = i;
+
+  render();
+
+}
+
+
+/* =====================================================
+   다음 문제
+   ===================================================== */
+
+function nextQ(){
+
+  if(answers[idx] === null){
+
+    alert("답을 하나 골라주세요!");
+
+    return;
+  }
+
+  if(idx < questions.length-1){
+
+    idx++;
+
+    render();
+
+  }else{
+
+    finish();
+
+  }
+
+}
+
+
+/* =====================================================
+   타이머
+   ===================================================== */
+
+function updateTimer(){
+
+  seconds--;
+
+  if(seconds <= 60){
+
+    document.getElementById("timer")
+      .classList.add("warning");
+
+  }
+
+  if(seconds <= 0){
+
+    clearInterval(timer);
+
+    alert("시험 시간이 종료되었습니다.");
+
+    finish();
+
+    return;
+  }
+
+  const min =
+    Math.floor(seconds/60);
+
+  const sec =
+    seconds%60;
+
+  document.getElementById("timer").textContent =
+    `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+}
+
+
+/* =====================================================
+   시험 종료 / 점수 계산
+   ===================================================== */
+
 function finish(){
- clearInterval(timer);let score=answers.reduce((s,v,i)=>s+(v===questions[i].c?10:0),0);
- show('result');document.getElementById('score').textContent=score+'점';
- let badge,msg,title;
- if(score>=90){badge='마음 박사 🧠';title='오… 거의 전문가인데?';msg='정신건강에 대한 기본 상식을 아주 잘 알고 있어!'}
- else if(score>=70){badge='마음 탐험가 🔎';title='잘했어!';msg='정신건강에 대해 꽤 잘 알고 있네. 조금만 더 알아가 보자!'}
- else if(score>=50){badge='마음 새싹 🌱';title='좋은 출발이야!';msg='틀린 문제도 새로운 걸 알게 되는 기회야.'}
- else{badge='마음 입문생 ✏️';title='괜찮아, 이제 시작이야!';msg='점수보다 중요한 건 내 마음과 주변 사람의 마음에 관심을 갖는 거야.'}
- document.getElementById('badge').textContent=badge;document.getElementById('resultTitle').textContent=title;document.getElementById('resultMsg').textContent=msg;
- confetti();
+
+  clearInterval(timer);
+
+  const score =
+    answers.reduce(
+      (sum,value,i)=>
+        sum + (value === questions[i].c ? 10 : 0),
+      0
+    );
+
+  const elapsedSeconds =
+    Math.min(
+      300,
+      Math.max(
+        0,
+        Math.floor((Date.now()-startTime)/1000)
+      )
+    );
+
+  let grade;
+
+  let message;
+
+  if(score >= 90){
+
+    grade = "A+";
+
+    message =
+      "정신건강 상식이 아주 탄탄하네요!<br>나와 주변 사람의 마음을 잘 살펴볼 수 있는 멋진 감각이에요.";
+
+  }else if(score >= 80){
+
+    grade = "A";
+
+    message =
+      "정신건강 상식이 꽤 탄탄해요!<br>조금만 더 알아두면 더욱 든든하겠어요.";
+
+  }else if(score >= 70){
+
+    grade = "B";
+
+    message =
+      "기본적인 정신건강 상식을 잘 알고 있어요!<br>이번 기회에 조금 더 알아보는 건 어떨까요?";
+
+  }else if(score >= 60){
+
+    grade = "C";
+
+    message =
+      "아직 헷갈리는 내용이 있네요.<br>정신건강에 대해 조금 더 알아보면 좋겠어요.";
+
+  }else{
+
+    grade = "D";
+
+    message =
+      "이번 기회에 정신건강 상식을 차근차근 알아봐요!<br>알아가는 것부터가 건강을 돌보는 시작이에요.";
+
+  }
+
+
+  document.getElementById("resultBadge").textContent =
+    grade;
+
+  document.getElementById("resultScore").textContent =
+    `${score}점`;
+
+  document.getElementById("resultMessage").innerHTML =
+    message;
+
+  document.getElementById("resultName").textContent =
+    userName;
+
+  document.getElementById("resultScoreSmall").textContent =
+    `${score}점`;
+
+  document.getElementById("resultGrade").textContent =
+    grade;
+
+  document.getElementById("resultTime").textContent =
+    formatTime(elapsedSeconds);
+
+
+  showScreen("resultScreen");
+
+  createConfetti();
+
+  /* Google Sheets로 결과 저장 */
+  saveResult(
+    score,
+    grade,
+    elapsedSeconds
+  );
+
 }
-function confetti(){const c=document.getElementById('confetti');for(let i=0;i<70;i++){let e=document.createElement('i');e.style.left=Math.random()*100+'%';e.style.top=(-10-Math.random()*20)+'%';e.style.background=['#ff5ca8','#c7ff45','#5c7cff','#ffe14d','#a96bff'][i%5];e.style.transform=`rotate(${Math.random()*90}deg)`;e.style.animationDelay=Math.random()*.8+'s';c.appendChild(e)}}
+
+
+/* =====================================================
+   시간 표시
+   ===================================================== */
+
+function formatTime(totalSeconds){
+
+  const min =
+    Math.floor(totalSeconds/60);
+
+  const sec =
+    totalSeconds%60;
+
+  return `${min}분 ${sec}초`;
+
+}
+
+
+/* =====================================================
+   다시 풀기
+   ===================================================== */
+
+function restartExam(){
+
+  idx = 0;
+
+  answers = Array(questions.length).fill(null);
+
+  seconds = 300;
+
+  submitted = false;
+
+  startTime = Date.now();
+
+  showScreen("examScreen");
+
+  render();
+
+  clearInterval(timer);
+
+  timer = setInterval(updateTimer,1000);
+
+}
+
+
+/* =====================================================
+   합격 축하 효과
+   ===================================================== */
+
+function createConfetti(){
+
+  const symbols = [
+    "✦",
+    "★",
+    "●",
+    "◆",
+    "♥",
+    "✚"
+  ];
+
+  for(let i=0;i<45;i++){
+
+    const piece =
+      document.createElement("div");
+
+    piece.className =
+      "confetti";
+
+    piece.textContent =
+      symbols[
+        Math.floor(
+          Math.random()*symbols.length
+        )
+      ];
+
+    piece.style.left =
+      Math.random()*100 + "vw";
+
+    piece.style.top =
+      "-30px";
+
+    piece.style.fontSize =
+      (10 + Math.random()*15) + "px";
+
+    piece.style.animationDelay =
+      (Math.random()*1.2) + "s";
+
+    piece.style.transform =
+      `rotate(${Math.random()*360}deg)`;
+
+    document.body.appendChild(piece);
+
+    setTimeout(()=>{
+      piece.remove();
+    },4000);
+
+  }
+
+}
+
+
+/* =====================================================
+   엔터키로 시험 시작
+   ===================================================== */
+
+document
+  .getElementById("nameInput")
+  .addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+      startExam();
+    }
+
+  });
+
 </script>
+
 </body>
 </html>
